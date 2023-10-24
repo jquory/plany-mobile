@@ -7,10 +7,19 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 const Tab = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
 
+const MyStack = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name='HomeScreen' component={Home}/>
+            <Stack.Screen name='Profile' component={Profile}/>
+            <Stack.Screen name='Notifications' component={Notifications}/>
+        </Stack.Navigator>
+    )
+}
 const MyTabs = () => {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Home" component={Home} options={{
+            <Tab.Screen name="Home" component={MyStack} options={{
                 tabBarIcon: ({focused}) => (
                     <CustomIcon
                         name="home"
@@ -20,6 +29,7 @@ const MyTabs = () => {
                         background={focused ? 'bg-black' : 'bg-transparent'}
                     />
                 ),
+                headerShown: false,
                 tabBarStyle: {
                     borderTopWidth: 0,
                 },
@@ -83,12 +93,7 @@ export default function App() {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name='Stacks' component={MyTabs} options={{headerShown: false}}/>
-                <Stack.Screen name='Profile' component={Profile}/>
-                <Stack.Screen name='Notifications' component={Notifications}/>
-            </Stack.Navigator>
-            {/*<MyTabs/>*/}
+            <MyTabs/>
         </NavigationContainer>
     );
 }

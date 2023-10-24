@@ -27,7 +27,11 @@ const Home = ({navigation}) => {
             <View className='px-4 bg-white'>
                 <SafeAreaView>
                     <Header name='Amanda' image={Person} notificationCount={10}
-                            navigateToProfile={() => navigation.navigate('Profile')}
+                            navigateToProfile={() => navigation.navigate('Profile', {
+                                name: 'Amanda',
+                                age: 20,
+                                image: 'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436180.jpg?w=1380&t=st=1698153128~exp=1698153728~hmac=539f8100caee2b672ded1f4822f21553541f07a69e6a3a8bd234b8500f1cdf3f'
+                            })}
                             navigateToNotification={() => navigation.navigate('Notifications')}/>
                 </SafeAreaView>
 
